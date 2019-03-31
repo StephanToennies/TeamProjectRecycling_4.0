@@ -12,7 +12,10 @@
     <form id="form1" runat="server">
     <div>
         <h1>Mobile Master Page</h1>
-        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" >
+            <p>
+                Anmeldung</p>
+        </asp:ContentPlaceHolder>
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>

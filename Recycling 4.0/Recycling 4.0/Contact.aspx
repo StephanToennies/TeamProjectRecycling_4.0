@@ -4,7 +4,9 @@
     
     <!-- Login Buton -->
     <div>
+        <!--
         <form action="action_page.php">
+            -->
             <div class="container">
                 <label for="username"><b>Username</b></label>
                 <input type="text" placeholder="Nutzername" name="username" required>
@@ -12,7 +14,9 @@
                 <input type="password" placeholder="Passwort" name="psw" required>
                 <button type="submit">Login</button>
             </div>
-        </form> 
+        <!--
+        </form>
+        -->
    </div>
 
 

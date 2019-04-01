@@ -11,7 +11,7 @@ namespace Recycling_4._0
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Login login = new Login();
         }
     }
 }

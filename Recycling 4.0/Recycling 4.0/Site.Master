@@ -20,25 +20,6 @@
 <body>
     <form runat="server">
         <div id="login">
-            <asp:Login ID="Login1" runat="server">
-            </asp:Login>
-        </div>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="~/">Recicling 4.0 Market Place</a>
-                </div>
-            </div>
-        </div>
-        
-        
-
-        <div class="container body-content">
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> Team 01</p>
-            </footer>
-        </div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 <asp:ScriptManager runat="server" ID="ScriptManager1">
                     <Scripts>
                         <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%><%--Framework Scripts--%>
@@ -57,7 +38,27 @@
                         <%--Site Scripts--%>
                     </Scripts>
                 </asp:ScriptManager>
+
+                    <asp:Login ID="Login1" runat="server" Class="hidden"></asp:Login>
+                
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+        </div>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="~/">Recicling 4.0 Market Place</a>
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="container body-content">
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> Team 01</p>
+            </footer>
+        </div>
     </form>
     <p>
         &nbsp;</p>

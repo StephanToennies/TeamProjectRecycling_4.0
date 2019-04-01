@@ -19,11 +19,10 @@
 </head>
 <body>
     <form runat="server">
-
-        <p> Nutzername
-            <input id="Username" type="text" />
-            Passwort
-            <input id="Password" type="password" /></p>
+        <div id="login">
+            <asp:Login ID="Login1" runat="server">
+            </asp:Login>
+        </div>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">

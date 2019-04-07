@@ -38,11 +38,18 @@
                         <%--Site Scripts--%>
                     </Scripts>
                 </asp:ScriptManager>
+                    
+                <!--<asp:Login ID="Login1" runat="server" Class="hidden"></asp:Login> -->
+            
+                    
+                <form id="form1">
+                    <asp:Login ID = "Login2" runat="server" OnAuthenticate= "ValidateUser"></asp:Login>
+                </form>
 
-                    <asp:Login ID="Login1" runat="server" Class="hidden"></asp:Login>
-                
+            <!-- 
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+            -->
         </div>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -51,8 +58,6 @@
                 </div>
             </div>
         </div>
-        
-        
 
         <div class="container body-content">
             <footer>

@@ -12,6 +12,7 @@ namespace Recycling_4._0
             // Web-API-Konfiguration und -Dienste
 
             // Web-API-Routen
+            
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +20,7 @@ namespace Recycling_4._0
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
         }
     }
 }

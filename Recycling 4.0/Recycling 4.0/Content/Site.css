@@ -2,6 +2,8 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    padding-left: 10px;
+    background: #E6FFE6;
 }
 
 /* Wrapping element */
@@ -21,8 +23,36 @@ select,
 textarea {
     max-width: 280px;
 }
+/*Selbst eingefügt*/
+.a0 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    font-size: 25px;
+    color: greenyellow;
+}
 
+.centerContainer {
+    position: relative;
+    top: 250px;
+    left: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
 
+.footer-cont {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+/
+
+footer {
+    padding-left: 10px;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

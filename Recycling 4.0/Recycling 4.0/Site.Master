@@ -44,20 +44,39 @@
             </asp:ContentPlaceHolder>
             
         </div>
+ 
+        <div class="navbar navbar-inverse navbar-fixed-top">
+
+                <div class="navbar-header">
+                    <div class="a0">
+                        <p>Recicling 4.0 Market Place</p>
+                    </div>
+                </div>
+
+        </div>
+        
+        <!-- 
+        //Alte implementation
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="~/">Recicling 4.0 Market Place</a>
+                    <div class="a0">
+                        <p>Recicling 4.0 Market Place</p>
+                    </div>
                 </div>
             </div>
         </div>
+        -->
 
         <div class="container body-content">
-            <footer>
+            <div class="footer-cont">
+                <footer>
                 <p>&copy; <%: DateTime.Now.Year %> Team 01</p>
             </footer>
+            </div>
+            
         </div>
+
     </form>
-    <p>&nbsp;</p>
 </body>
 </html>

@@ -41,6 +41,7 @@ namespace Recycling_4._0
                 }
                 switch (userId)
                 {
+
                     case -1:
                         Login1.FailureText = "Username and/or password is incorrect.";
                         break;

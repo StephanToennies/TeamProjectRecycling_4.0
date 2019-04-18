@@ -152,7 +152,7 @@
     <Content Include="App_Data\User_log.ldf">
       <DependentUpon>User.mdf</DependentUpon>
     </Content>
-    <Content Include="Contact.aspx" />
+    <Content Include="LogedIn.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -202,7 +202,9 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
-    <Content Include="Bundle.config" />
+    <Content Include="Bundle.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site.Mobile.Master" />
     <Content Include="Views\web.config" />
   </ItemGroup>
@@ -217,12 +219,12 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="LogedIn.aspx.cs">
+      <DependentUpon>LogedIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="LogedIn.aspx.designer.cs">
+      <DependentUpon>LogedIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Default.aspx.cs">

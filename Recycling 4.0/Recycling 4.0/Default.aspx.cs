@@ -17,6 +17,9 @@ namespace Recycling_4._0
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            User user1 = new User("User A", "password");
+            User user2 = new User("User B", "password");
+
             Login login = new Login();
             login.ID = "Login1";
             Login1.Controls.Add(login);
@@ -25,6 +28,8 @@ namespace Recycling_4._0
 
         protected void ValidateUser(object sender, EventArgs e)
         {
+            
+            /*
             int userId = 0;
             string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -52,7 +57,9 @@ namespace Recycling_4._0
                         FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
                         break;
                 }
+            
             }
+            */
         }
     }
 }

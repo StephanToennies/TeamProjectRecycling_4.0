@@ -11,7 +11,7 @@ namespace Recycling_4._0
         protected string password;
         protected int credits;
         
-        User(string nameN, string passwordN)
+        public User(string nameN, string passwordN)
         {
             name = nameN;
             password = passwordN;

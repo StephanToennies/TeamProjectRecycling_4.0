@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Recycling_4._0
 {
-    public partial class LogedIn : Page
+    public partial class Main : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

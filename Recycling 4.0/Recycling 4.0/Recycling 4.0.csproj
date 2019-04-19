@@ -146,12 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="App_Data\dbo.Procedure.sql" />
-    <Content Include="App_Data\User.mdf" />
-    <Content Include="App_Data\User.sql" />
-    <Content Include="App_Data\User_log.ldf">
-      <DependentUpon>User.mdf</DependentUpon>
-    </Content>
     <Content Include="Main.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -261,6 +255,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

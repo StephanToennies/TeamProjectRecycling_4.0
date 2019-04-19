@@ -57,12 +57,15 @@ namespace Recycling_4._0
 
         protected void OnLoggedIn(object sender, EventArgs e)
         {
-            //TODO
+            Response.Redirect("~/Main.aspx");
         }
+
         protected void OnLoginError(object sender, EventArgs e)
         {
+            Console.WriteLine("User ist invalide.");
+            Login1.InstructionText = "Der Nutzername oder E-Mail ist falsch.";
+
             //TODO
-            
         }
     }
 }

@@ -7,7 +7,11 @@
         <p>+++TEST Default site TEST+++</p>
         <form id="form1">
             <div class="centerContainer">
-                <asp:Login ID = "Login1" runat="server" Class="hidden" OnLoggingIn= "OnLoggingIn">
+                <asp:Login id="Login1" runat="server" Class="hidden"
+                    OnAuthenticate="OnAuthenticate"
+                    OnLoggingIn="OnLoggingIn"
+                    OnLoggedIn="OnLoggedIn"
+                    OnLoginError="OnLoginError">
                 </asp:Login>
             </div>
         </form>

@@ -152,7 +152,7 @@
     <Content Include="App_Data\User_log.ldf">
       <DependentUpon>User.mdf</DependentUpon>
     </Content>
-    <Content Include="LogedIn.aspx" />
+    <Content Include="Main.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -219,12 +219,12 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="LogedIn.aspx.cs">
-      <DependentUpon>LogedIn.aspx</DependentUpon>
+    <Compile Include="Main.aspx.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LogedIn.aspx.designer.cs">
-      <DependentUpon>LogedIn.aspx</DependentUpon>
+    <Compile Include="Main.aspx.designer.cs">
+      <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

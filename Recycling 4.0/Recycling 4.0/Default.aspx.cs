@@ -20,26 +20,26 @@ namespace Recycling_4._0
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
                 Login login = new Login();
                 login.ID = "Login1";
                 Login1.Controls.Add(login);
-            
-            
-
-            
-
         }
 
-        protected void OnLoggingIn(object sender, EventArgs e)
+        private bool SiteSpecificAuthenticationMethod(string UserName, string Password)
         {
+            return UserName.Equals(user1.getName()) && Password.Equals(user1.getPassword()) ||
+                   UserName.Equals(user2.getName()) && Password.Equals(user2.getPassword());
+        }
 
-            if (Login1.UserName.Equals(user1.getName()) && Login1.Password.Equals(user1.getPassword()) || 
-                Login1.UserName.Equals(user2.getName()) && Login1.Password.Equals(user2.getPassword()))
+        protected void OnAuthenticate(object sender, AuthenticateEventArgs e)
+        {
+            bool Authenticated = false;
+            Authenticated = SiteSpecificAuthenticationMethod(Login1.UserName, Login1.Password);
+
+            if (Authenticated)
             {
                 Console.WriteLine("User ist valide.");
                 Login1.InstructionText = String.Empty;
-
             }
             else
             {
@@ -47,6 +47,22 @@ namespace Recycling_4._0
                 Login1.InstructionText = "Der Nutzername oder E-Mail ist falsch.";
             }
 
+            e.Authenticated = Authenticated;
+        }
+
+        protected void OnLoggingIn(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+        protected void OnLoggedIn(object sender, EventArgs e)
+        {
+            //TODO
+        }
+        protected void OnLoginError(object sender, EventArgs e)
+        {
+            //TODO
+            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Recycling_4._0
 {
     public class UploadingXML
     {
-        public LocalDataStoreSlot xmlData;
+        public LocalDataStoreSlot xmlData { get; set; }
         public DateTime dateOfUploade;
         public User uploadedUser;
         public int costForTheXML;

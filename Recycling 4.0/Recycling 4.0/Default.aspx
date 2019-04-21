@@ -5,7 +5,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <p>+++TEST Default site TEST+++</p>
-        <form id="form1">
+        <form id="form1" runat="server">
             <div class="centerContainer">
                 <asp:Login id="Login1" runat="server" Class="hidden"
                     OnAuthenticate="OnAuthenticate"

@@ -53,6 +53,20 @@ namespace Recycling_4._0
         protected void OnLoggingIn(object sender, EventArgs e)
         {
             //TODO
+
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Do Not Delete\LoginApp\DB\LoginDB.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
+            string query = "Select * from tbl_Login Where username = '" + Login1.UserNameLabelText.Trim() + "' and password = '" + Login1.PasswordLabelText.Trim() + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, sqlConnection);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            /*
+            if (dtbl.Rows.Count ==1)
+            {
+                Main objMain = new Main();
+                
+
+            }*/
+
         }
 
         protected void OnLoggedIn(object sender, EventArgs e)

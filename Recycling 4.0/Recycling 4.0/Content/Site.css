@@ -41,6 +41,20 @@ textarea {
     font-size: 18px;
 }
 
+.uploadingXMLData {
+    margin: auto;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 20px;
+    padding-right: 20px;
+}
+h1.uploadingXMLData {
+    margin: auto;
+}
+table.uploadingXMLData {
+    margin: auto;
+}
+
 .footer-cont {
     position: fixed;
     bottom: 0;
@@ -48,7 +62,6 @@ textarea {
     height: 40px;
 }
 
-/
 
 footer {
     padding-left: 10px;

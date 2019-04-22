@@ -77,9 +77,7 @@ namespace Recycling_4._0
         protected void OnLoginError(object sender, EventArgs e)
         {
             Console.WriteLine("User ist invalide.");
-            Login1.InstructionText = "Der Nutzername oder E-Mail ist falsch.";
-
-            //TODO
+            Login1.InstructionText = "Der Nutzername ist falsch.";
         }
     }
 }

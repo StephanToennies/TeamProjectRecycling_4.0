@@ -61,12 +61,12 @@ namespace Recycling_4._0
             Int32.TryParse(TextBox1.Text, out tempCostForXML);
 
             //Ruft UploadeDatei von der Fileuploade auf und wandelt diese in in LocalDataStoreSlot um
-            //tempXML =FileUpload1.FileContent.CreateObjRef(/*TODO*/);
+            //tempXML =FileUpload1.FileContent.CopyTo(tempXML);
         }
 
         protected void addNewXML(object sender, EventArgs e)
         {
-            uploadedXMLs.Add(new UploadingXML(tempXML, tempUser, tempCostForXML));
+                        uploadedXMLs.Add(new UploadingXML(tempXML, tempUser, tempCostForXML));
         }
     }
 }

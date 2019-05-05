@@ -310,3 +310,5 @@ C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\R
 C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\Recycling 4.0\bin\de\System.Web.Http.resources.dll
 C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\Recycling 4.0\bin\de\System.Web.Http.WebHost.resources.dll
 C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\Recycling 4.0\obj\Debug\Recycling 4.0.csproj.CopyComplete
+C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\Recycling 4.0\obj\Debug\Recycling_4._0.Properties.Resources.resources
+C:\Stephan\Studium_Extended\Teamprojekt\TeamProjectRecycling_4.0\Recycling 4.0\Recycling 4.0\obj\Debug\Recycling 4.0.csproj.GenerateResource.cache

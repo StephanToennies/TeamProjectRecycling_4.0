@@ -46,27 +46,12 @@
         </div>
  
         <div class="navbar navbar-inverse navbar-fixed-top">
-
                 <div class="navbar-header">
                     <div class="a0">
                         <p>Recycling 4.0 Marktplatz</p>
                     </div>
                 </div>
-
         </div>
-        
-        <!-- 
-        //Alte implementation
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <div class="a0">
-                        <p>Recicling 4.0 Market Place</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
 
         <div class="container body-content">
             <div class="footer-cont">

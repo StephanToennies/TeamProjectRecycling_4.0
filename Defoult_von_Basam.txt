@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+
+
+public partial class _Default : System.Web.UI.Page
+{
+    
+    private string strconnct = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString;
+    
+    
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private bool UserLogin(string un, string pw)
+    {
+        SqlConnection con = new SqlConnection(strconnct);
+        SqlCommand cmd = new SqlCommand("Select username from users where username=@un and password=@pw", con);
+        cmd.Parameters.AddWithValue("@un",un);
+        cmd.Parameters.AddWithValue("@pw", pw);
+        con.Open();
+        String result = Convert.ToString(cmd.ExecuteScalarAsync());
+
+        /*int x;
+        Int32.TryParse(new SqlCommand("Select count(*) FROM users WHERE UserName='" + un + "' AND Password='" + pw + "';").ToString(), out x);
+        return x != 0;
+        */
+
+        /* SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM users WHERE UserName='" + un + "' AND Password='" + pw + "'", con);
+         DataTable dt = new DataTable();
+         sda.Fill(dt);
+         if (dt.Rows[0][0].ToString() == "1")
+         {
+             Console.WriteLine("Nuttzer ist valide");
+             return true;
+         }
+         else
+         {
+             Console.WriteLine("Nutzer ist invalide");
+             return false;
+         }
+         */
+        return true;
+    }
+
+    protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+    {
+        string un = Login1.UserName;
+        string pw = Login1.Password;
+
+        bool result = false;
+        result = UserLogin(un, pw);
+
+        if (result)
+        {
+            e.Authenticated = true;
+            Session["username"] = un;
+
+
+        }
+        else
+        {
+            Console.WriteLine("User ist invalide.");
+            Login1.InstructionText = "Der Nutzername oder E-Mail ist falsch.";
+            e.Authenticated = false;
+        }
+
+    }
+
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+        Session["username"] = TextBox1.Text;
+    }
+
+    protected void OnLoggedIn(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Welcome.aspx");
+    }
+
+    protected void OnLoginError(object sender, EventArgs e)
+    {
+        Console.WriteLine("User ist invalide");
+        Login1.InstructionText = "Der Nutzername ist falsch.";
+    }
+}

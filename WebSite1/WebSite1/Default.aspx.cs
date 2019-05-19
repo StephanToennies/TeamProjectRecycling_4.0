@@ -22,14 +22,16 @@ public partial class _Default : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(strconnct);
         SqlCommand cmd = new SqlCommand("Select username from users where username=@un and password=@pw", con);
+        
         cmd.Parameters.AddWithValue("@un",un);
         cmd.Parameters.AddWithValue("@pw", pw);
+        
         con.Open();
         String result = Convert.ToString(cmd.ExecuteScalarAsync());
 
         if (String.IsNullOrEmpty(result)) return false; return true;
 
-
+  
     }
 
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
@@ -53,6 +55,6 @@ public partial class _Default : System.Web.UI.Page
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
     {
-        Session["username"] = TextBox1.Text;
+        Session["username"] = Login1.UserName;
     }
 }

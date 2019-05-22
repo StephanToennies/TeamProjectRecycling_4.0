@@ -37,6 +37,8 @@
                         </td>
                     </tr>
                 </table>
+                
+                <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
             </div>
 
         </form>

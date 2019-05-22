@@ -72,21 +72,12 @@ public partial class Welcome : System.Web.UI.Page {
             Button1.Controls.Add(button);
         }
 
-        /*
-        string HtmlBody = createTableFromSQL(GetDataXMLUploade());
-        File.WriteAllText(@"~/Welcome.aspx", HtmlBody);
-        */
-
-
         //Populating a DataTable from database.
         DataTable dt = this.GetDataXMLUploade();
-
         //Building an HTML string.
         StringBuilder html = new StringBuilder();
-
         //Table start.
         html.Append("<table border = '1'>");
-
         //Building the Header row.
         html.Append("<tr>");
         foreach (DataColumn column in dt.Columns)
@@ -96,7 +87,6 @@ public partial class Welcome : System.Web.UI.Page {
             html.Append("</th>");
         }
         html.Append("</tr>");
-
         //Building the Data rows.
         foreach (DataRow row in dt.Rows)
         {
@@ -109,116 +99,45 @@ public partial class Welcome : System.Web.UI.Page {
             }
             html.Append("</tr>");
         }
-
         //Table end.
         html.Append("</table>");
-
         //Append the HTML string to Placeholder.
         PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
-    
+
 }
 
     protected void addNewXML(object sender, EventArgs e)
     {
+        //!!!
+        //Beim Reloade der Seite wird der Upload noch mal hochgeladen
+        //!!!
+            xmlName = newXmlName();
+            string fileName = "xml_" + xmlName;
+            string filePath = Server.MapPath("~/Uploads/") + fileName;
+            FileUpload1.SaveAs(filePath);
+            string xml = File.ReadAllText(filePath);
 
-        //string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
+            tempUser = Session["username"].ToString();
+            var sqlFormattedDate = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Int32.TryParse(TextBox1.Text.ToString(), out tempCostForXML);
 
-        xmlName++;
-        string fileName = "xml_"+xmlName;
-        string filePath = Server.MapPath("~/Uploads/") + fileName;
-        FileUpload1.SaveAs(filePath);
-        string xml = File.ReadAllText(filePath);
+            SqlConnection con = new SqlConnection(strconnct);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO UpladedData VALUES ('" + xmlName + "', '" + tempUser + "', '" + sqlFormattedDate + "', '" + xml + "', '" + tempCostForXML + "');");
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+            Console.WriteLine("Daten hochgeladen.");
 
-        tempUser = Session["username"].ToString();
-        var sqlFormattedDate = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        Int32.TryParse(TextBox1.Text.ToString(), out tempCostForXML);
-
-        SqlConnection con = new SqlConnection(strconnct);
-        con.Open();
-        SqlCommand cmd = new SqlCommand("INSERT INTO UpladedData VALUES ('"+ xmlName + "', '"+ tempUser + "', '" + sqlFormattedDate + "', '" + xml + "', '" + tempCostForXML + "');");
-        cmd.Connection = con;
-        cmd.ExecuteNonQuery();
-        Console.WriteLine("Daten hochgeladen.");
-
+            FileUpload1.Attributes.Clear();
         
     }
-
-    /*
-    public string createTableFromSQL(DataTable dt)
-    {
-        //Create table for uploaded xml 
-        //DataTable dt = new DataTable();
-        /*
-        string tab = "\t";
-
-        dt.Columns.Add("Xml_ID");
-        dt.Columns.Add("UPloaded_User");
-        dt.Columns.Add("Date");
-        dt.Columns.Add("Price");
-        dt.Rows.Add(new object[] { "Xml_ID", "UPloaded_User", "Date", "Price" });
-
-        StringBuilder sb = new StringBuilder();
-
-
-        sb.AppendLine(tab + tab + "<table>");
-
-        // headers.
-        sb.Append(tab + tab + tab + "<tr>");
-        foreach (DataColumn dc in dt.Columns)
-        {
-            sb.AppendFormat("<td>{0}</td>", dc.ColumnName);
-        }
-        */
-    /*
-    StringBuilder strHTMLBuilder = new StringBuilder();
-    strHTMLBuilder.Append("<html >");
-    strHTMLBuilder.Append("<head>");
-    strHTMLBuilder.Append("</head>");
-    strHTMLBuilder.Append("<body>");
-    strHTMLBuilder.Append("<table border='1px' cellpadding='1' cellspacing='1' bgcolor='lightyellow' style='font-family:Garamond; font-size:smaller'>");
-
-    strHTMLBuilder.Append("<tr >");
-    foreach (DataColumn myColumn in dt.Columns)
-    {
-        strHTMLBuilder.Append("<td >");
-        strHTMLBuilder.Append(myColumn.ColumnName);
-        strHTMLBuilder.Append("</td>");
-
-    }
-    strHTMLBuilder.Append("</tr>");
-
-
-    foreach (DataRow myRow in dt.Rows)
-    {
-
-        strHTMLBuilder.Append("<tr >");
-        foreach (DataColumn myColumn in dt.Columns)
-        {
-            strHTMLBuilder.Append("<td >");
-            strHTMLBuilder.Append(myRow[myColumn.ColumnName].ToString());
-            strHTMLBuilder.Append("</td>");
-
-        }
-        strHTMLBuilder.Append("</tr>");
-    }
-
-    //Close tags.  
-    strHTMLBuilder.Append("</table>");
-    strHTMLBuilder.Append("</body>");
-    strHTMLBuilder.Append("</html>");
-
-    string Htmltext = strHTMLBuilder.ToString();
-
-    return Htmltext;
-}
-*/
 
     private DataTable GetDataXMLUploade()
     {
         string constr = ConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString;
         using (SqlConnection con = new SqlConnection(constr))
         {
-            using (SqlCommand cmd = new SqlCommand("SELECT ID, UploadedUser, UploadedDate, CostForXML FROM UpladedData"))
+            using (SqlCommand cmd = new SqlCommand("SELECT Id, UploadedUser, UploadedDate, CostForXML FROM UpladedData"))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter())
                 {
@@ -232,5 +151,22 @@ public partial class Welcome : System.Web.UI.Page {
                 }
             }
         }
+    }
+
+    protected int newXmlName()
+    {
+        DataTable dt = this.GetDataXMLUploade();
+        int temp;
+        int i = 0;
+
+        for(int j = 0; i < dt.Rows.Count; i++)
+        {
+            Int32.TryParse(dt.Rows[i]["Id"].ToString(), out temp); // Where Fieldname is the name of fields from your database that you want to get
+            if(i != temp)
+            {
+                return i;
+            }
+        }
+        return i;
     }
 }

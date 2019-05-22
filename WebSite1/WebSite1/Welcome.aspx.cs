@@ -27,8 +27,17 @@ public partial class Welcome : System.Web.UI.Page {
         if (!IsPostBack)
         {
             Label1.Text = "Welcome " + Session["username"];
-            tempUser = Session["username"].ToString();
 
+            //take username from Login
+            try
+            {
+                tempUser = Session["username"].ToString();
+            }
+            catch (System.NullReferenceException)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            
             //inittialisiere Label
             Label label2 = new Label();
             label2.ID = "Label2";
@@ -66,7 +75,6 @@ public partial class Welcome : System.Web.UI.Page {
 
     protected void addNewXML(object sender, EventArgs e)
     {
-        //uploadedXMLs.Add(new UploadingXML(tempXML, tempUser, tempCostForXML));
 
         //string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
 

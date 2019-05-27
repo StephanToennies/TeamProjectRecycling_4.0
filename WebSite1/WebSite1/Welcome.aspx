@@ -10,6 +10,7 @@
     <body>
         <form id="form1" runat="server">
             <div>
+                <asp:Label ID="Label_Credits" runat="server"></asp:Label>
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 <h1 class="uploadingXMLData">Laden Sie Ihre XML Datei hoch</h1>
                 <table class="uploadingXMLData">

@@ -34,11 +34,12 @@
                     <tr>
                         <td></td>
                         <td>
-                            <asp:Button ID="Button1" runat="server" Text="Hochladen" OnClick="addNewXML"/>
+                            <asp:Button ID="Button1" runat="server" Text="Hochladen" OnClick="AddNewXML"/>
                         </td>
                     </tr>
                 </table>
-                
+                <asp:Button ID="Downloade" runat="server" Text="Downlade" style="width: 100px; height: 25px" OnClick="btnDownload_Click"/>
+                <a></a>
                 <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
             </div>
 

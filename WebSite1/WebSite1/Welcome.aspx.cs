@@ -16,7 +16,6 @@ public partial class Welcome : System.Web.UI.Page {
     protected static int xmlName;
     private string strconnct = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString;
 
-    public List<UploadingXML> uploadedXMLs = new List<UploadingXML>();
     protected HttpPostedFile tempXML;
     protected String tempUser;
     protected int tempCostForXML;
@@ -25,8 +24,6 @@ public partial class Welcome : System.Web.UI.Page {
     {
         SqlConnection con = new SqlConnection(strconnct);
 
-        if (!IsPostBack)
-        {
             //take username from Login
             try
             {
@@ -70,7 +67,6 @@ public partial class Welcome : System.Web.UI.Page {
             button.ID = "Button1";
             button.Visible = true;
             Button1.Controls.Add(button);
-        }
 
         //Populating a DataTable from database.
         DataTable dt = this.GetDataXMLUploade();
@@ -86,10 +82,16 @@ public partial class Welcome : System.Web.UI.Page {
             html.Append(column.ColumnName);
             html.Append("</th>");
         }
+        html.Append("<th>");
+        html.Append("Downloads");
+        html.Append("</th>");
         html.Append("</tr>");
+
+        int rowCounter = 0;
         //Building the Data rows.
         foreach (DataRow row in dt.Rows)
         {
+
             html.Append("<tr>");
             foreach (DataColumn column in dt.Columns)
             {
@@ -97,7 +99,12 @@ public partial class Welcome : System.Web.UI.Page {
                 html.Append(row[column.ColumnName]);
                 html.Append("</td>");
             }
+            html.Append("<td>");
+            //TODO: Fixe die Anezige der Buttons
+            html.Append("<asp:Button ID=\"ButtonDownloade"+rowCounter.ToString()+"\" runat=\"server\"  OnClick=\"btnDownload_Click\"/>");
+            html.Append("</td>");
             html.Append("</tr>");
+            rowCounter++;
         }
         //Table end.
         html.Append("</table>");
@@ -106,11 +113,10 @@ public partial class Welcome : System.Web.UI.Page {
 
 }
 
-    protected void addNewXML(object sender, EventArgs e)
+    protected void AddNewXML(object sender, EventArgs e)
     {
-        //!!!
-        //Beim Reloade der Seite wird der Upload noch mal hochgeladen
-        //!!!
+        if (TextBox1.Text != "")
+        {
             xmlName = newXmlName();
             string fileName = "xml_" + xmlName;
             string filePath = Server.MapPath("~/Uploads/") + fileName;
@@ -128,8 +134,11 @@ public partial class Welcome : System.Web.UI.Page {
             cmd.ExecuteNonQuery();
             Console.WriteLine("Daten hochgeladen.");
 
-            FileUpload1.Attributes.Clear();
-        
+            TextBox1.Text = "";
+        }
+
+        //Reloade der Seite erzwingen
+        Response.Redirect(Request.RawUrl);
     }
 
     private DataTable GetDataXMLUploade()
@@ -168,5 +177,21 @@ public partial class Welcome : System.Web.UI.Page {
             }
         }
         return i;
+    }
+    protected void btnDownload_Click(object sender, EventArgs e)
+    {
+
+        //Response.Redirect("Uploade/xml_0");
+
+        string FileName = "xml.xml"; // It's a file name displayed on downloaded file on client side.
+
+        System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
+        response.ClearContent();
+        response.Clear();
+        response.ContentType = "text/xml";
+        response.AddHeader("Content-Disposition", "attachment; filename=" + FileName + ";");
+        response.TransmitFile(Server.MapPath("~/Uploads/xml_0"));
+        response.Flush();
+        response.End();
     }
 }

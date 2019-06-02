@@ -101,8 +101,8 @@ public partial class Welcome : System.Web.UI.Page {
             }
             html.Append("<td>");
             //TODO: Fixe die Anezige der Buttons
-            //html.Append("<asp:Button ID=\"ButtonDownloade"+rowCounter+ "\"  runat=\"server\" Text = \"Downlade\" Width=\"79px\" Height=\"22px\"  OnClick=\"btnDownload_Click\" />");
-            html.Append("<button id='ButtonDownloade" + rowCounter + "'  runat='server' Text ='Downlade' Width='79px' Height='22px'  OnClick='btnDownload_Click' />");
+            //html.Append("<asp:Button ID=\"ButtonDownloade"+rowCounter+ "\"  runat=\"server\" Text = \"Downloade\" Width=\"79px\" Height=\"22px\"  OnClick=\"btnDownload_Click\" />");
+            html.Append("<button id=\"ButtonDownloade"+rowCounter + "\"  runat=\"server\" name=\"Downloade\" style=\"width:79px; height:22px\"  OnClick=\"btnDownload_Click\">Downloade");
             html.Append("</td>");
             html.Append("</tr>");
             rowCounter++;

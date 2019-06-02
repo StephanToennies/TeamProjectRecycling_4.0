@@ -12,7 +12,7 @@
             <div>
                 <asp:Label ID="Label_Credits" runat="server"></asp:Label>
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                <h1 class="uploadingXMLData">Laden Sie Ihre XML Datei hoch</h1>
+                <h3 class="uploadingXMLData">Laden Sie Ihre XML Datei hoch</h3>
                 <table class="uploadingXMLData">
                     <tr>
                         <td>

@@ -130,7 +130,7 @@ public partial class Welcome : System.Web.UI.Page {
 
             SqlConnection con = new SqlConnection(strconnct);
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO UpladedData VALUES ('" + xmlName + "', '" + tempUser + "', '" + sqlFormattedDate + "', '" + xml + "', '" + tempCostForXML + "');");
+            SqlCommand cmd = new SqlCommand("INSERT INTO UpladedData VALUES ('" + xmlName + "', '" + tempUser + "', '" + sqlFormattedDate + "', '" + xml + "', '" + (tempCostForXML + 10) + "');"); //+10 weil sehe imp_4_2
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
             Console.WriteLine("Daten hochgeladen.");

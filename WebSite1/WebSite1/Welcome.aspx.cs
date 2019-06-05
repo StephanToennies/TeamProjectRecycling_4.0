@@ -195,4 +195,20 @@ public partial class Welcome : System.Web.UI.Page {
         response.Flush();
         response.End();
     }
+
+    protected void btnAddCredits(object sender, EventArgs e)
+    {
+        //string conn = ConfigurationManager.ConnectionStrings["welcome"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(strconnct))
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE users SET Credits='50' WHERE UserName='" + tempUser + "';", con);
+
+            cmd.CommandType = CommandType.Text;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+        }
+        
+
+    }
 }

@@ -12,7 +12,9 @@
             <div>
                 <asp:Label ID="Label_Credits" runat="server"></asp:Label>
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <br />
                 <h3 class="uploadingXMLData">Laden Sie Ihre XML Datei hoch</h3>
+                <br />
                 <table class="uploadingXMLData">
                     <tr>
                         <td>
@@ -38,11 +40,13 @@
                         </td>
                     </tr>
                 </table>
+                <br />
                 <asp:Button ID="Downloade" runat="server" Text="Downlade" style="width: 100px; height: 25px" OnClick="btnDownload_Click"/>
-                <a></a>
+                <br />
                 <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
+                <br />
+                <asp:Button ID="buttonAddCredits" runat="server" Text="Add Credits to 50" OnClick="btnAddCredits"/>
             </div>
-
         </form>
     </body>
 </html>

@@ -106,7 +106,7 @@ public partial class Welcome : System.Web.UI.Page {
         html.Append("</tr>");
 
         int rowCounter = 0;
-        //Building the Data rows.
+        //Generiere aus DataTable eine HTML-Tabelle
         foreach (DataRow row in dt.Rows)
         {
 
@@ -118,8 +118,6 @@ public partial class Welcome : System.Web.UI.Page {
                 html.Append("</td>");
             }
             html.Append("<td>");
-            //TODO: Fixe die Anezige der Buttons
-            //html.Append("<asp:Button ID=\"ButtonDownloade"+rowCounter+ "\"  runat=\"server\" Text = \"Downloade\" Width=\"79px\" Height=\"22px\"  OnClick=\"btnDownload_Click\" />");
             html.Append("<button id=\"ButtonDownloade"+rowCounter + "\"  runat=\"server\" name=\"Downloade\" style=\"width:79px; height:22px\"  OnClick=\"btnDownload_Click\">Downloade");
             html.Append("</td>");
             html.Append("</tr>");
@@ -127,7 +125,7 @@ public partial class Welcome : System.Web.UI.Page {
         }
         //Table end.
         html.Append("</table>");
-        //Append the HTML string to Placeholder.
+        //Ein Platzhalter
         PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
 
 }
@@ -226,7 +224,7 @@ public partial class Welcome : System.Web.UI.Page {
             con.Open();
             cmd.ExecuteNonQuery();
         }
-        
-
+        //Reloade der Seite erzwingen
+        Response.Redirect(Request.RawUrl);
     }
 }

@@ -5,7 +5,7 @@
     <head runat="server">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link type="text/css" rel="stylesheet" href="Content/Site.css">
-        <title>Main Screen</title>
+        <title>Marktplatz</title>
     </head>
     <body>
         <form id="form1" runat="server">
@@ -44,7 +44,6 @@
                     </tr>
                 </table>
                 <br />
-                <asp:Button ID="Downloade" runat="server" Text="Downlade" style="width: 100px; height: 25px" OnClick="btnDownload_Click"/>
                 <br />
                 <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
                 <br />

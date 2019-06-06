@@ -54,6 +54,7 @@ public partial class _Default : System.Web.UI.Page
                 if (users.Rows[0][0] != null)
                 {
                     e.Authenticated = true;
+                    Session["username"] = un;
                 }
             }
             catch (System.IndexOutOfRangeException)

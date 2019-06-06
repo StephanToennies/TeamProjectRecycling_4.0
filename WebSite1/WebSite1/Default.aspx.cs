@@ -39,17 +39,28 @@ public partial class _Default : System.Web.UI.Page
         string un = Login1.UserName;
         string pw = Login1.Password;
 
-        bool result = UserLogin(un,pw);
-
-        if (result)
+        DataTable users = new DataTable();
+        SqlConnection con = new SqlConnection(strconnct);
+        SqlCommand cmdCredits = new SqlCommand("SELECT UserName from users WHERE UserName='" + un+"' AND Password='"+ pw +"';");
+        cmdCredits.CommandType = CommandType.Text;
+        con.Open();
+        using (SqlDataAdapter sda = new SqlDataAdapter())
         {
-            e.Authenticated = true;
-            Session["username"] = un;
-
+            cmdCredits.Connection = con;
+            sda.SelectCommand = cmdCredits;
+            sda.Fill(users);
+            try
+            {
+                if (users.Rows[0][0] != null)
+                {
+                    e.Authenticated = true;
+                }
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+                e.Authenticated = false;
+            }
         }
-        else e.Authenticated = false;
-
-
     }
 
 

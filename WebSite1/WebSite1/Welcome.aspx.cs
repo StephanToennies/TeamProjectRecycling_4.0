@@ -18,55 +18,73 @@ public partial class Welcome : System.Web.UI.Page {
 
     protected HttpPostedFile tempXML;
     protected String tempUser;
+    protected int tempCreditValue;
     protected int tempCostForXML;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         SqlConnection con = new SqlConnection(strconnct);
 
-            //take username from Login
-            try
-            {
-                Label1.Text = "Welcome " + Session["username"];
-                tempUser = Session["username"].ToString();
-            }
-            catch (System.NullReferenceException)
-            {
-                Response.Redirect("~/Default.aspx");
-            }
-            
-            //inittialisiere Label
-            Label label2 = new Label();
-            label2.ID = "Label2";
-            label2.Text = "Hochzuladnede Datei:";
-            label2.Visible = true;
-            Label2.Controls.Add(label2);
+        //take username from Login
+        try
+        {
+            Label1.Text = "Welcome " + Session["username"];
+            tempUser = Session["username"].ToString();
+        }
+        catch (System.NullReferenceException)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
 
-            //inittialisiere Fileuploade
-            FileUpload fileupload = new FileUpload();
-            fileupload.ID = "FileUpload1";
-            fileupload.Visible = true;
-            FileUpload1.Controls.Add(fileupload);
-
-            //inittialisiere Label
-            Label label3 = new Label();
-            label3.ID = "Label3";
-            label3.Text = "Festgelegter Preis für den Verkauf";
-            label3.Visible = true;
-            Label3.Controls.Add(label3);
-
-            //intitalise TextBox 
-            TextBox textbox = new TextBox();
-            textbox.ID = "TextBox1";
-            textbox.Visible = true;
-            TextBox1.Controls.Add(textbox);
+        //inittialisiere Label
+        Label labeln_CreditValue = new Label();
+        DataTable dtCrecitValue = new DataTable(); 
+        labeln_CreditValue.ID = "Labeln_CreditValue";
+        SqlCommand cmdCredits = new SqlCommand("SELECT Credits from users WHERE UserName='" + tempUser + "';", con);
+        cmdCredits.CommandType = CommandType.Text;
+        con.Open();
+        using (SqlDataAdapter sda = new SqlDataAdapter())
+        {
+            cmdCredits.Connection = con;
+            sda.SelectCommand = cmdCredits;
+            sda.Fill(dtCrecitValue);
+            tempCreditValue = Convert.ToInt32(dtCrecitValue.Rows[0][0]);
+        }
+        Labeln_CreditValue.Text = "Ihr Credits:  " + tempCreditValue;
 
 
-            //intitalise Button 
-            Button button = new Button();
-            button.ID = "Button1";
-            button.Visible = true;
-            Button1.Controls.Add(button);
+        //inittialisiere Label
+        Label label2 = new Label();
+        label2.ID = "Label2";
+        label2.Text = "Hochzuladnede Datei:";
+        label2.Visible = true;
+        Label2.Controls.Add(label2);
+
+        //inittialisiere Fileuploade
+        FileUpload fileupload = new FileUpload();
+        fileupload.ID = "FileUpload1";
+        fileupload.Visible = true;
+        FileUpload1.Controls.Add(fileupload);
+
+        //inittialisiere Label
+        Label label3 = new Label();
+        label3.ID = "Label3";
+        label3.Text = "Festgelegter Preis für den Verkauf";
+        label3.Visible = true;
+        Label3.Controls.Add(label3);
+
+        //intitalise TextBox 
+        TextBox textbox = new TextBox();
+        textbox.ID = "TextBox1";
+        textbox.Visible = true;
+        TextBox1.Controls.Add(textbox);
+
+
+        //intitalise Button 
+        Button button = new Button();
+        button.ID = "Button1";
+        button.Visible = true;
+        Button1.Controls.Add(button);
 
         //Populating a DataTable from database.
         DataTable dt = this.GetDataXMLUploade();

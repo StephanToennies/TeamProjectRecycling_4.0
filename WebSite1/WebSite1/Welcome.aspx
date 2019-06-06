@@ -13,6 +13,9 @@
                 <asp:Label ID="Label_Credits" runat="server"></asp:Label>
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 <br />
+                <br />
+                <asp:Label ID="Labeln_CreditValue" runat="server" Text="Ihr Credits:  "></asp:Label>
+                <br />
                 <h3 class="uploadingXMLData">Laden Sie Ihre XML Datei hoch</h3>
                 <br />
                 <table class="uploadingXMLData">

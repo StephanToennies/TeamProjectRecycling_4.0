@@ -44,6 +44,7 @@
                     </tr>
                 </table>
                 <br />
+                <asp:Button ID="buttonDownloade" runat="server" Text="Downloade" OnClick="btnDownload_Click"></asp:Button>
                 <br />
                 <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
                 <br />

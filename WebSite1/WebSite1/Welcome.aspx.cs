@@ -54,37 +54,37 @@ public partial class Welcome : System.Web.UI.Page {
 
 
         //inittialisiere Label
-        Label label2 = new Label();
-        label2.ID = "Label2";
-        label2.Text = "Hochzuladnede Datei:";
-        label2.Visible = true;
-        Label2.Controls.Add(label2);
+        //Label label2 = new Label();
+        Label2.ID = "Label2";
+        Label2.Text = "Hochzuladnede Datei:";
+        Label2.Visible = true;
+        //Label2.Controls.Add(label2);
 
         //inittialisiere Fileuploade
-        FileUpload fileupload = new FileUpload();
-        fileupload.ID = "FileUpload1";
-        fileupload.Visible = true;
-        FileUpload1.Controls.Add(fileupload);
+        //FileUpload fileupload = new FileUpload();
+        FileUpload1.ID = "FileUpload1";
+        FileUpload1.Visible = true;
+        //FileUpload1.Controls.Add(fileupload);
 
         //inittialisiere Label
-        Label label3 = new Label();
-        label3.ID = "Label3";
-        label3.Text = "Festgelegter Preis für den Verkauf";
-        label3.Visible = true;
-        Label3.Controls.Add(label3);
+        //Label label3 = new Label();
+        Label3.ID = "Label3";
+        Label3.Text = "Festgelegter Preis für den Verkauf";
+        Label3.Visible = true;
+        //Label3.Controls.Add(label3);
 
         //intitalise TextBox 
-        TextBox textbox = new TextBox();
-        textbox.ID = "TextBox1";
-        textbox.Visible = true;
-        TextBox1.Controls.Add(textbox);
+        //TextBox textbox = new TextBox();
+        TextBox1.ID = "TextBox1";
+        TextBox1.Visible = true;
+        //TextBox1.Controls.Add(textbox);
 
 
         //intitalise Button 
-        Button button = new Button();
-        button.ID = "Button1";
-        button.Visible = true;
-        Button1.Controls.Add(button);
+        //Button button = new Button();
+        Button1.ID = "Button1";
+        Button1.Visible = true;
+        //Button1.Controls.Add(button);
 
         //Populating a DataTable from database.
         DataTable dt = this.GetDataXMLUploade();
@@ -201,7 +201,7 @@ public partial class Welcome : System.Web.UI.Page {
         //Response.Redirect("Uploade/xml_0");
 
         string FileName = "xml.xml"; // It's a file name displayed on downloaded file on client side.
-
+        
         System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
         response.ClearContent();
         response.Clear();
@@ -210,6 +210,7 @@ public partial class Welcome : System.Web.UI.Page {
         response.TransmitFile(Server.MapPath("~/Uploads/xml_0"));
         response.Flush();
         response.End();
+        
     }
 
     protected void btnAddCredits(object sender, EventArgs e)
